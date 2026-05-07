@@ -1,0 +1,132 @@
+:root {
+    --laranja-principal: #f56c1f;
+    --laranja-secundario: #ff8b3d;
+    --fundo: #f8f9fb;
+    --texto: #2f2f2f;
+    --branco: #ffffff;
+    --sombra: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--fundo);
+    color: var(--texto);
+}
+
+.container {
+    width: min(1100px, 92%);
+    margin: 0 auto;
+}
+
+.topo {
+    background: linear-gradient(90deg, var(--laranja-principal), var(--laranja-secundario));
+    color: var(--branco);
+    padding: 20px 0;
+    box-shadow: var(--sombra);
+}
+
+.topo h1 {
+    font-size: 1.8rem;
+}
+
+.topo p {
+    margin-top: 6px;
+    font-size: 0.95rem;
+}
+
+.secao-titulo {
+    margin: 26px 0 20px;
+}
+
+.secao-titulo h2 {
+    margin-bottom: 8px;
+}
+
+.grade-produtos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 18px;
+    padding-bottom: 30px;
+}
+
+.card-produto {
+    background: var(--branco);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: var(--sombra);
+    transition: transform 0.2s ease;
+}
+
+.card-produto:hover {
+    transform: translateY(-4px);
+}
+
+.produto-imagem {
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+    background-color: #ffe2cf;
+}
+
+.card-conteudo {
+    padding: 16px;
+}
+
+.card-conteudo h3 {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.card-conteudo p {
+    font-size: 0.94rem;
+    margin-bottom: 14px;
+    min-height: 66px;
+}
+
+.botao-avaliar {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--branco);
+    background-color: var(--laranja-principal);
+    border: none;
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-weight: 700;
+}
+
+.botao-avaliar:hover {
+    background-color: #d75713;
+}
+
+.mensagem-vazia,
+.caixa-aviso {
+    background-color: var(--branco);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: var(--sombra);
+}
+
+.pagina-avaliacao {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.caixa-aviso {
+    max-width: 620px;
+    text-align: center;
+}
+
+.caixa-aviso h2 {
+    margin-bottom: 12px;
+}
+
+.caixa-aviso p {
+    margin-bottom: 16px;
+}
