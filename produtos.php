@@ -9,14 +9,14 @@ $resultado = $conexao->query($sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ReviewShop | Produtos</title>
+    <title><title>Sistema de Avaliação de Produtos</title></title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <header class="topo">
         <div class="container">
-            <h1>ReviewShop</h1>
-            <p>Sistema de Avaliação de Produtos</p>
+            <h1>Sistema de Avaliação de Produtos</h1>
+            <p>Escolha um produto para acessar a página de avaliação.</p>
         </div>
     </header>
 
