@@ -30,6 +30,8 @@ Disponibilizar uma plataforma simples em que usuários possam escolher produtos 
 - Sprint 4: Gerenciamento de Avaliações
 - Sprint 5: Ajustes finais e documentação
 
+O código foi mantido simples, com arquivos em português e pouca lógica para facilitar a explicação em apresentação acadêmica.
+
 ## Entrega da Sprint 1
 - Estrutura inicial do projeto criada.
 - Página de produtos (`produtos.php`) integrada ao banco de dados.
@@ -37,3 +39,12 @@ Disponibilizar uma plataforma simples em que usuários possam escolher produtos 
 - Redirecionamento de `index.php` para a página de produtos.
 - Página `avaliar.php` preparada apenas como placeholder da Sprint 2.
 - Script SQL com criação do banco, tabela `produtos` e dados fictícios.
+
+## Entrega da Sprint 2 e 3
+- Página `avaliar.php` mostra o produto e permite enviar comentário e nota.
+- `php/salvar_avaliacao.php` salva avaliação no banco.
+- `gerenciar_avaliacoes.php` lista avaliações ativas.
+- `editar_avaliacao.php` permite alterar nota e comentário.
+- `php/atualizar_avaliacao.php` atualiza avaliação.
+- `php/excluir_avaliacao.php` marca avaliação como excluída.
+- `database/sprint2_3.sql` cria a tabela `avaliacoes`.
