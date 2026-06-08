@@ -15,22 +15,40 @@ if ($idProduto > 0) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Avaliar Produto - Sistema de Avaliação de Produtos</title>
+    <meta name="description" content="Avalie o produto selecionado no Sistema de Avaliação de Produtos.">
+    <title>Avaliar Produto — Sistema de Avaliação de Produtos</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
     <header class="topo">
-        <div class="container">
-            <h1>Sistema de Avaliação de Produtos</h1>
-            <p>Avalie o produto selecionado.</p>
+        <div class="container topo-conteudo">
+            <div class="marca">
+                <div class="icone-marca">★</div>
+                <div>
+                    <h1>Sistema de Avaliação de Produtos</h1>
+                    <p>Avalie o produto selecionado.</p>
+                </div>
+            </div>
+            <a class="botao-topo" href="gerenciar_avaliacoes.php">
+                ☰ Ver avaliações realizadas
+            </a>
         </div>
     </header>
 
     <main class="container pagina-avaliacao">
+
         <?php if ($produto): ?>
             <section class="caixa-avaliacao">
+
+                <p class="titulo-form">✏️ Sua avaliação</p>
+
                 <div class="info-produto">
-                    <img src="<?php echo htmlspecialchars($produto['imagem_referencia']); ?>" alt="Imagem do produto <?php echo htmlspecialchars($produto['nome']); ?>" class="produto-imagem">
+                    <img
+                        src="<?php echo htmlspecialchars($produto['imagem_referencia']); ?>"
+                        alt="Imagem do produto <?php echo htmlspecialchars($produto['nome']); ?>"
+                        class="produto-imagem"
+                    >
                     <div>
                         <h2><?php echo htmlspecialchars($produto['nome']); ?></h2>
                         <p><?php echo htmlspecialchars($produto['descricao']); ?></p>
@@ -41,28 +59,37 @@ if ($idProduto > 0) {
                     <input type="hidden" name="id_produto" value="<?php echo (int) $produto['id_produto']; ?>">
                     <input type="hidden" name="nota" id="nota" value="0">
 
-                    <label>Nota</label>
-                    <div class="avaliacao-estrelas">
-                        <?php for ($i = 1; $i <= 5; $i++): ?>
-                            <button type="button" class="estrela-botao" data-value="<?php echo $i; ?>">★</button>
-                        <?php endfor; ?>
+                    <div>
+                        <label>Nota</label>
+                        <div class="avaliacao-estrelas">
+                            <?php for ($i = 1; $i <= 5; $i++): ?>
+                                <button type="button" class="estrela-botao" data-value="<?php echo $i; ?>">★</button>
+                            <?php endfor; ?>
+                        </div>
                     </div>
 
-                    <label for="comentario">Comentário</label>
-                    <textarea id="comentario" name="comentario" rows="5" placeholder="Escreva seu comentário"></textarea>
+                    <div>
+                        <label for="comentario">Comentário <span style="color:#c44">*</span></label>
+                        <textarea id="comentario" name="comentario" rows="5" placeholder="Conte sua experiência com este produto..."></textarea>
+                    </div>
+
                     <div class="erro-avaliacao" aria-live="polite"></div>
 
-                    <button type="submit" class="botao-avaliar">Enviar avaliação</button>
-                    <a href="produtos.php" class="botao-avaliar botao-secundario">Voltar para produtos</a>
+                    <div class="grupo-botoes">
+                        <button type="submit" class="botao-avaliar">Enviar avaliação ➔</button>
+                        <a href="produtos.php" class="botao-avaliar botao-secundario">← Voltar para produtos</a>
+                    </div>
                 </form>
+
             </section>
         <?php else: ?>
             <div class="caixa-aviso">
                 <h2>Produto não encontrado.</h2>
                 <p>Verifique o produto selecionado e tente novamente.</p>
-                <a href="produtos.php" class="botao-avaliar">Voltar para produtos</a>
+                <a href="produtos.php" class="botao-avaliar">← Voltar para produtos</a>
             </div>
         <?php endif; ?>
+
     </main>
 
     <script src="js/script.js"></script>
