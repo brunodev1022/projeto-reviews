@@ -13,63 +13,88 @@ $resultado = $conexao->query($sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerenciar Avaliações - Sistema de Avaliação de Produtos</title>
+    <meta name="description" content="Gerencie, edite ou exclua avaliações registradas no Sistema de Avaliação de Produtos.">
+    <title>Gerenciar Avaliações — Sistema de Avaliação de Produtos</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
     <header class="topo">
-        <div class="container">
-            <h1>Sistema de Avaliação de Produtos</h1>
-            <p>Gerencie as avaliações registradas.</p>
+        <div class="container topo-conteudo">
+            <div class="marca">
+                <div class="icone-marca">★</div>
+                <div>
+                    <h1>Sistema de Avaliação de Produtos</h1>
+                    <p>Gerencie as avaliações registradas.</p>
+                </div>
+            </div>
+            <a class="botao-topo" href="produtos.php">
+                ← Voltar para produtos
+            </a>
         </div>
     </header>
 
     <main class="container">
+
         <section class="secao-titulo">
-            <h2>Avaliações ativas</h2>
-            <p>Edite ou exclua avaliações já salvas.</p>
+            <div class="destaque-secao">
+                <div class="icone-secao">☰</div>
+                <div class="texto-secao">
+                    <h2>Avaliações realizadas</h2>
+                    <p>Edite ou exclua avaliações já salvas.</p>
+                </div>
+            </div>
         </section>
 
-        <?php if ($resultado && $resultado->num_rows > 0): ?>
-            <table class="tabela-avaliacoes">
-                <thead>
-                    <tr>
-                        <th>Produto</th>
-                        <th>Nota</th>
-                        <th>Comentário</th>
-                        <th>Data</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php while ($avaliacao = $resultado->fetch_assoc()): ?>
-                        <tr>
-                            <td><?php echo htmlspecialchars($avaliacao['produto_nome']); ?></td>
-                            <td>
-                                <?php for ($i = 1; $i <= 5; $i++): ?>
-                                    <span class="estrela <?php echo $i <= $avaliacao['nota'] ? 'ativa' : ''; ?>">★</span>
-                                <?php endfor; ?>
-                            </td>
-                            <td><?php echo nl2br(htmlspecialchars($avaliacao['comentario'])); ?></td>
-                            <td><?php echo date('d/m/Y H:i', strtotime($avaliacao['criado_em'])); ?></td>
-                            <td>
-                                <a class="botao-avaliar botao-pequeno" href="editar_avaliacao.php?id_avaliacao=<?php echo (int) $avaliacao['id_avaliacao']; ?>">Editar</a>
-                                <form class="form-excluir-avaliacao" action="php/excluir_avaliacao.php" method="post">
-                                    <input type="hidden" name="id_avaliacao" value="<?php echo (int) $avaliacao['id_avaliacao']; ?>">
-                                    <button type="submit" class="botao-avaliar botao-excluir botao-pequeno" onclick="return confirm('Deseja realmente excluir esta avaliação?')">Excluir</button>
-                                </form>
-                            </td>
-                        </tr>
-                    <?php endwhile; ?>
-                </tbody>
-            </table>
-        <?php else: ?>
-            <p class="mensagem-vazia">Não há avaliações ativas no momento.</p>
-        <?php endif; ?>
+        <section class="secao-gerenciar">
+            <?php if ($resultado && $resultado->num_rows > 0): ?>
+                <div class="tabela-wrapper">
+                    <table class="tabela-avaliacoes">
+                        <thead>
+                            <tr>
+                                <th>Produto</th>
+                                <th>Avaliação</th>
+                                <th>Comentário</th>
+                                <th>Data</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php while ($avaliacao = $resultado->fetch_assoc()): ?>
+                                <tr>
+                                    <td><strong><?php echo htmlspecialchars($avaliacao['produto_nome']); ?></strong></td>
+                                    <td>
+                                        <?php for ($i = 1; $i <= 5; $i++): ?>
+                                            <span class="estrela <?php echo $i <= $avaliacao['nota'] ? 'ativa' : ''; ?>">★</span>
+                                        <?php endfor; ?>
+                                    </td>
+                                    <td><?php echo nl2br(htmlspecialchars($avaliacao['comentario'])); ?></td>
+                                    <td><?php echo date('d/m/Y', strtotime($avaliacao['criado_em'])); ?></td>
+                                    <td>
+                                        <div class="td-acoes">
+                                            <a class="botao-avaliar botao-pequeno" href="editar_avaliacao.php?id_avaliacao=<?php echo (int) $avaliacao['id_avaliacao']; ?>">✏️ Editar</a>
+                                            <form class="form-excluir-avaliacao" action="php/excluir_avaliacao.php" method="post">
+                                                <input type="hidden" name="id_avaliacao" value="<?php echo (int) $avaliacao['id_avaliacao']; ?>">
+                                                <button type="submit" class="botao-avaliar botao-excluir botao-pequeno" onclick="return confirm('Deseja realmente excluir esta avaliação?')">🗑 Excluir</button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <?php endwhile; ?>
+                        </tbody>
+                    </table>
+                </div>
+            <?php else: ?>
+                <div class="mensagem-vazia">
+                    <p>Não há avaliações ativas no momento.</p>
+                </div>
+            <?php endif; ?>
 
-        <div class="acoes-inferiores">
-            <a class="botao-avaliar" href="produtos.php">Voltar para produtos</a>
-        </div>
+            <div class="acoes-inferiores">
+                <a class="botao-avaliar" href="produtos.php">← Voltar para produtos</a>
+            </div>
+        </section>
+
     </main>
 
     <script src="js/script.js"></script>
