@@ -11,6 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             SET
                 nota = $nota,
                 comentario = '$comentario'
+                atualizado_em = CURRENT_TIMESTAMP
             WHERE id_avaliacao = $id_avaliacao
             AND status = 'ativa'";
 
