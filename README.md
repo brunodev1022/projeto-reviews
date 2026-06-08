@@ -62,9 +62,7 @@ projeto-reviews/
 ├── database/
 │   ├── banco.sql
 │   └── sprint2_3.sql
-├── docs/
-├── diagramas/
-├── prototipos/
+
 
 ```
 
