@@ -1,3 +1,4 @@
+USE sistema_avaliacao;
 CREATE TABLE IF NOT EXISTS avaliacoes (
     id_avaliacao INT AUTO_INCREMENT PRIMARY KEY,
     id_produto INT NOT NULL,
